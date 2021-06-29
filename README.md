@@ -517,7 +517,88 @@ Dentro de Js
  <img src=`${github}` />;
 ```
 
+<br>
+
+<div align="">
+<img width="50px"  src="https://i.postimg.cc/hPgD5cJm/folder.png" />
+</div>
+
+
+## Optimizar e infectar Fuentes
+
+La forma comun de utilizar fuentes en un proyecto web es consumirla desde algun CDN descargando desde los servidores ya sea de google o servicios externos, pero esto penzaliza en algunos casos equipos con poca conexion. 
+
+Para poder optimizar este apartado podemos aplicar 2 metodos uno sin instalacion y sin instalacion. 
+
+
+1.  ### Sin Instalacion
+    1.  Abrimos el archivo
+        > webpack.config.js 
+    2.  Lo configuramos de la siguiente manera 
+    ```js
+    {
+        test: /\.(woff|woff2)$/,
+        type: "asset/resource",
+        generator: {
+          filename: "assets/fonts/[name][ext]"
+        }
+    }
+    ```
+1. ### Con Instalacion
+
+    1. Vamos a instalar los siguientes plugins
+        ```console
+        npm i  --save-dev url-loader file-loader
+        ```
+    1. Abriremos el archivo
+    1. Lo configuraremos de la siguiente manera:
+        ```js
+        module.exports = {
+            ...
+        module: {
+            rules: [
+                    ...
+            {
+                test: /\.(woff|woff2)$/,
+                use: {
+                loader: "url-loader",
+                options: {
+                    // limit => limite de tamaño
+                    limit: 10000,
+                    // Mimetype => tipo de dato
+                    mimetype: "application/font-woff",
+                    // name => nombre de salida
+                    name: "[name].[ext]",
+                    // outputPath => donde se va a guardar en la carpeta final
+                    outputPath: "./assets/fonts/",
+                    publicPath: "./assets/fonts/",
+                    esModule: false,
+                }
+                }
+            }
+            ]
+        },
+            ...
+        }
+        ```
+    1. En los archivos Css vamos a implimentarlo asi:  
+        ```css
+
+        @font-face {
+            font-family: "Ubuntu";
+            src: url("../assets/fonts/ubuntu-regular.woff2") format('woff2'),
+                    url("../assets/fonts/ubuntu-regular.woff") format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+        ```
+
+
+
+
 
 
 ```js
 ```
+
+
