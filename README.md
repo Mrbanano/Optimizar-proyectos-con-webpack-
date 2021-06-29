@@ -51,25 +51,25 @@ la instacion es sensilla pero requiere de node, npm o yard el que sea de tu pref
     1. Inicializamos un repositorio.
 
         ```console
-        mrbanano@pc:~$ git init 
+        git init 
         ``` 
 
     1. Inicializamos un proyecto de node, si pasas -y se configura por defecto, si no deberas introducir los datos del proyecto
 
         ```console
-        mrbanano@pc:~$ npm init -y
+        npm init -y
         ``` 
     1. Instala el core de webpack como dependencia de desarollo 
 
         ```console
-        mrbanano@pc:~$ npm install --save-dev webpack
+        npm install --save-dev webpack
         # o una version especifica
-        mrbanano@pc:~$ npm install --save-dev webpack@<version>
+        npm install --save-dev webpack@<version>
         ``` 
 
     1. Instal el webpack cli 
         ```console
-        mrbanano@pc:~$ npm install --save-dev webpack-cli
+        npm install --save-dev webpack-cli
         ``` 
     1. Listo 
 
@@ -81,14 +81,14 @@ la instacion es sensilla pero requiere de node, npm o yard el que sea de tu pref
     
     1. Instala el core de webpack como dependencia de desarollo 
         ```console
-        mrbanano@pc:~$ npm install --save-dev webpack
+        npm install --save-dev webpack
         # o una version especifica
-        mrbanano@pc:~$ npm install --save-dev webpack@<version>
+        npm install --save-dev webpack@<version>
         ``` 
 
     1. Instal el webpack cli 
         ```console
-        mrbanano@pc:~$ npm install --save-dev webpack-cli
+        npm install --save-dev webpack-cli
         ``` 
 
     1. Listo 
@@ -120,7 +120,7 @@ Webpack trabaja con base en 2 modos:
    <br>
 
 ```console
-    mrbanano@pc:~$ npx webpack --mode development
+    npx webpack --mode development
 ``` 
 
 2.  **Production** 
@@ -130,7 +130,7 @@ Webpack trabaja con base en 2 modos:
    <br>
 
 ```console
-    mrbanano@pc:~$ npx webpack --mode production
+    npx webpack --mode production
 ``` 
 
 <div align="center">
@@ -240,7 +240,7 @@ Hay loader que no necesitan plugins y plugins que no necesitan loader, la mayori
 <br>
 <br>
 
-<div align="center">
+<div align="">
 <img width="160px"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Babel_Logo.svg/640px-Babel_Logo.svg.png" />
 </div>
 
@@ -270,7 +270,7 @@ la tarea que desempeña babel es tomar codigo de js moderno y compilarlo a javas
 Dentro de tu proyecto abriras tu consola e instalaras los siguientes paquetes.
 
 ```console
- mrbanano@pc:~$ npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
+ npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
 ```
 
 #### **@babel/core**
@@ -340,6 +340,50 @@ module: {
   }
 }
 ```
+
+<br>
+
+<div align="">
+<img width="75px"  src="https://clipground.com/images/html-logo-png-3.png" />
+</div>
+
+
+## Optimizar e infectar Html
+
+
+### HtmlWebpackPlugin
+Es un plugin para inyectar javascript, css, favicons, y nos facilita la tarea de enlazar los bundles a nuestro template HTML.
+
+1. ### Instalación
+
+    1. Abrimos nuestra terminar en nuestro proyecto  e instalamos:
+        ```console
+        npm i --save-dev  html-webpack-plugin 
+        ```
+    1. En el archivo
+       > webpack.config.js 
+    1. Vamos a importar este plugin   
+        ```js
+            const HtmlWebpackPlugin = require('html-webpack-plugin')
+        ```
+    1. Debajo del modulo vamos a configurar el plugin
+        ```js
+            // SECCION DE PLUGINS
+            plugins: [
+            new HtmlWebpackPlugin({ // CONFIGURACIÓN DEL PLUGIN
+                inject: true, // INYECTA EL BUNDLE AL TEMPLATE HTML 
+                template: './public/index.html', // LA RUTA AL TEMPLATE HTML
+                filename: './index.html' // NOMBRE FINAL DEL ARCHIVO
+             })
+            ]
+        ```
+    
+
+Si tu proyecto ya injectaba js con la etiqueta scrip deberas borrarla pues esto ya lo hace automatico 
+
+
+    
+    
 
 
 
