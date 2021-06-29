@@ -445,8 +445,7 @@ Si deseamos posteriormente podemos agregar herramientas poderosas de CSS como se
 <br>
     
 <div align="">
-<img width="50px"  src="
-https://i.postimg.cc/fLS5x7zc/galeria.png" />
+<img width="50px"  src="https://i.postimg.cc/fLS5x7zc/galeria.png" />
 </div>
 
 
@@ -519,3 +518,6 @@ Dentro de Js
 ```
 
 
+
+```js
+```
