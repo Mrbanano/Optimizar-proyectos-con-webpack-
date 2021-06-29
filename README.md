@@ -344,7 +344,7 @@ module: {
 <br>
 
 <div align="">
-<img width="75px"  src="https://clipground.com/images/html-logo-png-3.png" />
+<img width="90px"  src="https://clipground.com/images/html-logo-png-3.png" />
 </div>
 
 
