@@ -489,6 +489,33 @@ module.exports = {
 Si tu proyecto ya tenia imganes enlazadas a la una carpera del proyecto deberas mover esa dirrecion a la nueva
 
 
+## Imagenes como variables 
+
+Este es uno de los loaders que no necesitan instalacion y nos permite convertir las imagenes a variables, vamos a configurar en el 
+> webpack.config.js 
+
 ```js
+module.exports = {
+	...
+  module: {
+    rules: [
+      {
+        test: /\.png/,
+        type: "asset/resource"
+      }
+    ]
+  },
+}
 ```
+Una vez realizada la configuracion ya podemos utilizar las imagenes de la siguiente manera:
+
+Importamos el nuevo recurso 
+```js
+import github from '../assets/images/github.png';
+```
+Dentro de Js 
+```js
+ <img src=`${github}` />;
+```
+
 
