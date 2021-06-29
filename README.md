@@ -238,9 +238,10 @@ Nos van a ayudar a extender las funcionalidades con los loaders, añadir otras c
 Hay loader que no necesitan plugins y plugins que no necesitan loader, la mayoria de estas funcionalidades extendidas y complemetarias deberan ser instaladas desde un manejador de paquetes y guardadas como dependencias de desarollo, su configuracion e implementacion dependera del creador.
 
 <br>
+<br>
 
 <div align="center">
-<img width="100px"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Babel_Logo.svg/640px-Babel_Logo.svg.png" />
+<img width="160px"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Babel_Logo.svg/640px-Babel_Logo.svg.png" />
 </div>
 
 
@@ -269,7 +270,7 @@ la tarea que desempeña babel es tomar codigo de js moderno y compilarlo a javas
 Dentro de tu proyecto abriras tu consola e instalaras los siguientes paquetes.
 
 ```console
- mrbanano@pc:~$ npm install   --save-dev babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
+ mrbanano@pc:~$ npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
 ```
 
 #### **@babel/core**
