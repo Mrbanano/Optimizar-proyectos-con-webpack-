@@ -1,7 +1,10 @@
 <div align="center">
 <img width="200px"  src="https://miro.medium.com/max/2400/1*xQCjgB2DVqhtqGoGw9E6TQ.png" />
+
+# webpack
 </div>
-<hr>
+
+
 
 [webpack](https://webpack.js.org/)
 
@@ -116,7 +119,7 @@ Webpack trabaja con base en 2 modos:
 
    <br>
 
-```shell
+```console
     mrbanano@pc:~$ npx webpack --mode development
 ``` 
 
@@ -126,7 +129,7 @@ Webpack trabaja con base en 2 modos:
 
    <br>
 
-```Bash
+```console
     mrbanano@pc:~$ npx webpack --mode production
 ``` 
 
@@ -234,10 +237,108 @@ Nos van a ayudar a extender las funcionalidades con los loaders, añadir otras c
 
 Hay loader que no necesitan plugins y plugins que no necesitan loader, la mayoria de estas funcionalidades extendidas y complemetarias deberan ser instaladas desde un manejador de paquetes y guardadas como dependencias de desarollo, su configuracion e implementacion dependera del creador.
 
+<br>
+
+<div align="center">
+<img width="100px"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Babel_Logo.svg/640px-Babel_Logo.svg.png" />
+</div>
 
 
+## Babel 
 
+<br>
 
+lo que se buscar realizar con webpack es volver nuestro proyecto lo mas optimizado posible, liviano, rapido y compatible, basado en estos objetivos vamos a utilizar otra herramienta que nos ayudara alcanzar este objetivo.
+
+<br>
+
+### ¿Que es babel?
+
+<br>
+
+En sus propias palabras "El compilador para JavaScript de próxima generación." para comprender esto debemos saber que Javascrip es regido por versiones que son lanzadas cada año y los navegadores al ser de diferentes emprezas implementas diferentes versiones de js, desfasando funcionalidades y compatibilidad.
+
+la tarea que desempeña babel es tomar codigo de js moderno y compilarlo a javascript que este soportado por todos los navegadore dotandonos de lo mejor de los 2 mundos, escribir codigo moderno que nos permite aplicar mejores practicas y tener un proyecto que sera compatible con todos los navegadores.
+
+<br>
+
+### Instalacion 
+
+<br>
+
+Dentro de tu proyecto abriras tu consola e instalaras los siguientes paquetes.
+
+```console
+ mrbanano@pc:~$ npm install   --save-dev babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
+```
+
+#### **@babel/core**
+
+Instala el nucreo, el core de babel, es indispensable para que fincione. 
+
+#### **@babel/preset-env**
+
+Adiciona anuestro proyecto con la capacidad de traducir las ultimas caracteristicas de js 
+
+#### **babel-loader**
+
+Loader encargado de conectar babel con webpack 
+
+#### **@babel/plugin-transform-runtime**
+
+Este plugin implmenta compilacion en tiempo de ejecucion,esto es util para el manejo del asincronismo de js, utiliza async y await
+
+<br>
+
+### Configuracion 
+
+<br>
+
+La configuracion de babel vive en el archivo
+> .babelrc
+
+que vive en la raiz del proyecto  de no existir vamos a crearlo y dentro pondremos los siguiente :
+
+<br>
+
+```js
+{
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
+}
+
+```
+
+Una vez realizada la configuracion basica de **babel** vamos a indicarle a webpack que vamos a usar babel,
+abrimos el archivo 
+
+> webpack.config.js
+
+y ponermo la el siguiente bloque, debajo de lo que configuramos en **conceptos basicos**
+
+```js
+{
+...,
+module: {
+    rules: [
+      {
+        // Test declara que extensión de archivos aplicara el loader
+        test: /\.js$/,
+        // Use es un arreglo u objeto donde dices que loader aplicaras
+        use: {
+          loader: "babel-loader"
+        },
+        // Exclude permite omitir archivos o carpetas especificas
+        exclude: /node_modules/
+      }
+    ]
+  }
+}
+```
 
 
 
