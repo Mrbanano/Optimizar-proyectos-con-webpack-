@@ -392,13 +392,13 @@ Si tu proyecto ya injectaba js con la etiqueta scrip deberas borrarla pues esto 
 
 Un preprocesador CSS es un programa que te permite generar CSS a partir de la syntax única del preprocesador. Existen varios preprocesadores CSS de los cuales escoger, sin embargo, la mayoría de preprocesadores CSS añadirán algunas características que no existen en CSS puro, como variable, mixins, selectores anidados, entre otros. Estas características hacen la estructura de CSS más legible y fácil de mantener.
 
-post procesadores son herramientas que procesan el CSS y lo transforman en una nueva hoja de CSS que le permiten optimizar y automatizar los estilos para los navegadores actuales.
+procesadores son herramientas que procesan el CSS y lo transforman en una nueva hoja de CSS que le permiten optimizar y automatizar los estilos para los navegadores actuales.
 
 Para dar soporte a CSS en webpack debes instalar los siguientes paquetes
 
 
 ```console
-npm i mini-css-extract-plugin css-loader -D
+npm i --save-dev mini-css-extract-plugin css-loader 
 ```
 
 #### **css-loader**
@@ -441,7 +441,54 @@ Si deseamos posteriormente podemos agregar herramientas poderosas de CSS como se
 - Post CSS
 
 
+<br>
+<br>
     
+<div align="">
+<img width="50px"  src="
+https://i.postimg.cc/fLS5x7zc/galeria.png" />
+</div>
 
 
+## Optimiza Imagenes 
+
+el primer paso para optimizar las imagenes es moverla del projecto a la carpeta final eso lo haremos un el siguiente plugin.
+
+### copy-webpack-plugin
+ 
+Para instalarlo debemos ejecutar el comando
+
+```console
+npm i  --save-dev copy-webpack-plugin
+```
+
+Debemos configurarlo para empezar en este ejemplo estamos moviendo toda la carpeta. 
+> webpack.config.js 
+
+```js
+...
+const CopyPlugin = require('copy-webpack-plugin');
+
+module.exports = {
+	...
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          //DONDE ESTAN LAS IMAGENES
+          from: path.resolve(__dirname, "src", "assets/images"),
+          //A DONDE LAS MOVERA
+          to: "assets/images"
+        }
+      ]
+    }),
+  ]
+}
+
+```
+Si tu proyecto ya tenia imganes enlazadas a la una carpera del proyecto deberas mover esa dirrecion a la nueva
+
+
+```js
+```
 
