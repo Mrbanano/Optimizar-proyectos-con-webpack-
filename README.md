@@ -671,47 +671,174 @@ Puedes usarlo en los imports de la siguiente manera
 import modulo from "@ejemplo/archivo.js";
 ```
 
-```js
-```
+
+<br>
+<br>
 
 
 <div align="">
 <img width="50px"  src="https://image.flaticon.com/icons/png/512/1022/1022463.png"/>
 </div>
 
-## Variables de entorno 
 
-instalar 
-npm i --save-dev dotenv-webpack 
+<br>
 
-crear archivo 
+### Variables de entorno 
 
-ejemplo de una  vabiable 
+<br>
 
-como llamarla 
+1. Instalar dotenv para utilizar variables de entorno
+    ```console
+      npm i --save-dev dotenv-webpack 
+    ```
+1. Crearemos en la raiz del proyecto el archivo
+     > .env 
+1. Crearemos una copia con el nombre 
+    > .env.example
+1. llenaremos el archivo original y 
+    ```js
+      NombreDeTuVariable = "Valor de tu variable "
+    ```
+1. Asi se usa 
+    ```js
+    const Variable = process.env.NombreDeTuVariable;
+    ```
+
+<br>
+
+listo ahora tienes en todo tu proyecto una variable secreta, en el example pon el nombre de la variable por si alguien mas quiere trabajar en el proyecto ve cuales son las variables 
 
 
-## mas sobre el modo de desarollo 
+
+<br>
+<div align="">
+<img width="50px"  src="https://image.flaticon.com/icons/png/512/1336/1336791.png"/>
+</div>
 
 
-mode development 
+<br>
 
-webpack --config webpack.config.dev.js
+### Development file 
 
+Es momento de separnos, en este punto haremos una copia de nuestra configuracion.
+> webpack.config.js
+> webpack.config.dev.js
+
+1. eliminaremos la seccion de optimizacion del segundo archivo 
+1. en el package.json crearemos modificaremos el comando dev 
+"dev": "webpack --mode development "
+
+    ```js
+    "dev": "webpack --mode development --config webpack.config.dev.js"
+    ``` 
+
+pero aun falta ver algo jaja
+
+<br>
+
+### webpack watch 
+ 
+ <br>
+
+consiste en monitorear todos los cambios y compilar al detectar algun cambio existen 2 modos de activarlo 
+
+1. en el archivo webpack.config
+    ```js
+      module.exports = {
+	    ...
+	    watch: true
+      }
+    ```
+1. en el comando se agrega el flag 
+    ```js
+     -watch
+    ``` 
+    Asi quedaria nuestro comando de desarollo:
+
+    ```js
+    "dev": "webpack --mode development --config webpack.config.dev.js"
+    ``` 
+
+
+<br>
+<br>
+<div align="">
+<img width="50px"  src="https://image.flaticon.com/icons/png/512/755/755066.png"/>
+</div>
+
+<br>
+
+### Production
+
+El proyecto tiene lo minimo basico sobre optimizacion, es momento de mostrarlo al mundo.
+
+ 
+ <br>
+
+La version de produccion debe ser la mas limpia, optimizad,actualizada y siempre lista para ser mostrada al publico.
 
 
 ## limpiar para produccion 
+ 
+ <br>
 
-clean-webpack-plugin
+Para limpiar todos las compilaciones que se quedan en el dist por estar haciendo pruebas vamos a instalar y configurar una dependincia nueva.
 
-llamar al plugin 
+1. Instalacion
+    ```console
+    npm i --save-dev clean-webpack-plugin
+     ```
+1. Vamos al archivo
+    > webpack.config.js
+1. Inicializamos el plugin 
+    ```js
+    plugins:[
+      ...
+      new CleanWebpackPlugin(),
+    ]
+    ```
 
-## webpack watch 
+Listo apartir de ahora la compilacion de produccion solo tendra los archivos de la ultima versio.
 
-poner en la configuracion en watch arriba de resolve
- o crear un comando 
 
-scrip : "webpack --watch --config "
+<br>
+<br>
+<div align="">
+<img width="50px"  src="https://image.flaticon.com/icons/png/512/2285/2285537.png"/>
+</div>
+
+
+## Deploy 
+
+
+Hora de mostarle al mundo de lo que somos capaces en este caso particular desplegaremos en Netlify.
+
+1. creamos el archivo en la raiz de proyecto
+    > Netflify.toml
+1. lo llenamos de esta manera:
+    ```js
+    [build]
+        publish = "dist/"
+        command = "npm run build"
+    ```
+
+la primer parte ya esta lista, la siguiente la aplicaras si tu proyecto tiene variables de entorno
+
+1. crea un carpeta en la raiz del proyecto 
+     >Scrip
+1. creamos dentro de ella el archivo
+     > create-env.js
+1. la llenas con los nombres de variables y donde deberian estar 
+    ```js
+    const fs = require('fs')
+
+    fs.writeFileSync('./.env', `NombreDeTuVariable=${process.env.NombreDetuVariable}`)
+    ```
+
+1. en el dashboard de netlify en la seccion de deploy busca la seccion de variables de entorno y podras, nombre y valor 
+
+Por tu proyecto ya deberia de estar todo listo
+queda entrar subir tu codigo a github y enlazar en netlify
 
 
 
