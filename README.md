@@ -404,6 +404,7 @@ npm i --save-dev mini-css-extract-plugin css-loader
 #### **css-loader**
 
 Loader para reconocer CSS
+
 #### **mini-css-extract-plugin** 
 
 Extrae el CSS en archivos
@@ -593,10 +594,82 @@ Para poder optimizar este apartado podemos aplicar 2 metodos uno sin instalacion
         }
         ```
 
+<br>
+<br>
 
+<div align="">
+<img width="50px"  src="https://i.postimg.cc/1tJk7hbG/archivo-comprimido.png" />
+</div>
 
+## Optimización: hashes, compresión y minificación de archivos
 
+Unos de las razones por que utilizamos webpack es porque nos permite optimizar y comprimir nuestro proyecto
 
+### Instalación
+
+ ```console
+    npm i --save-dev  css-minimizer-webpack-plugin terser-webpack-plugin
+```
+#### **css-minimizer-webpack-plugin** 
+Nos ayuda a comprimir nuestros archivos finales CSS
+
+#### **terser-webpack-plugin** 
+Permite minificar de una mejor forma
+
+  1. Instalamos dependencias 
+```console
+      npm i --save-dev  css-minimizer-webpack-plugin terser-webpack-plugin
+```
+  2. Abrimos el archivo
+     > webpack.config.js 
+  1. Importamos los plugins:
+      ```js
+      const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+      const TerserPlugin = require('terser-webpack-plugin');
+      ```
+  1. Debajo de la seccion de plugins creamos: 
+      ```js
+      module.exports = {
+        ...
+        optimization: {
+          minimize: true,
+          minimizer: [
+            new CssMinimizerPlugin(),
+            new TerserPlugin()
+          ]
+        }
+      }
+      ```
+Cuando nombremos en la configuración de webpack es importante usar [contenthash] para evitar problemas con la cache
+
+<br>
+<br>
+
+<div align="">
+<img width="50px"  src="https://image.flaticon.com/icons/png/512/1161/1161366.png"/>
+</div>
+
+## Webpack Alias
+
+<br>
+
+Esta es un configuracion sensilla que se realiza en webpack para otorgarle un nombre a rutas espeficicas para evitar las rutas largas y asigarnes un nombre clave o mejor dicho un alias. 
+
+```js
+module.exports = {
+	...
+	resolve: {
+		...
+    alias: {
+      '@nombreDeAlias': path.resolve(__dirname, 'src/<directorio>'),
+    },
+	}
+}
+```
+Puedes usarlo en los imports de la siguiente manera
+```js
+import modulo from "@ejemplo/archivo.js";
+```
 
 ```js
 ```
