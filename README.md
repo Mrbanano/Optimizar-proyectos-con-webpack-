@@ -704,3 +704,14 @@ webpack --config webpack.config.dev.js
 
 clean-webpack-plugin
 
+llamar al plugin 
+
+## webpack watch 
+
+poner en la configuracion en watch arriba de resolve
+ o crear un comando 
+
+scrip : "webpack --watch --config "
+
+
+
