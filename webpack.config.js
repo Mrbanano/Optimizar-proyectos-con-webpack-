@@ -4,6 +4,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin');
 const CssMinizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const Dotenvt =require('dotenv-webpack')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+
 
 module.exports = {
   entry: "./src/index.js",
@@ -75,6 +78,8 @@ module.exports = {
           }
         ]
       }),
+      new Dotenvt(),
+      new CleanWebpackPlugin(),
   ],
   optimization:{
     minimize: true,

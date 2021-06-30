@@ -675,3 +675,32 @@ import modulo from "@ejemplo/archivo.js";
 ```
 
 
+<div align="">
+<img width="50px"  src="https://image.flaticon.com/icons/png/512/1022/1022463.png"/>
+</div>
+
+## Variables de entorno 
+
+instalar 
+npm i --save-dev dotenv-webpack 
+
+crear archivo 
+
+ejemplo de una  vabiable 
+
+como llamarla 
+
+
+## mas sobre el modo de desarollo 
+
+
+mode development 
+
+webpack --config webpack.config.dev.js
+
+
+
+## limpiar para produccion 
+
+clean-webpack-plugin
+
